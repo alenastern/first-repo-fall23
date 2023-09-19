@@ -1,0 +1,26 @@
+---
+title: "Class Exercise"
+format:
+  html:
+    self-contained: true
+editor: source
+---
+
+```{r}
+library(tidyverse)
+storm_sample <- storms %>% filter(year > 2000)
+```
+
+```{r}
+storms %>%
+  count(name, year) %>%
+  count(year) %>%
+  ggplot(aes(year, n)) +
+  geom_line() +
+  scale_x_continuous(limits = c(1970, 2020),
+                     breaks = c(1970, 1990, 2010)) +
+  scale_y_continuous(limits = c(0, NA))
+```
+
+
+The `echo: false` option disables the printing of code (only output is displayed).
